@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.46/moment-timezone-with-data-1970-2030.min.js"></script>
     <title>World Clock</title>
   </head>
   <body>
@@ -12,25 +13,40 @@
       <main>
         <h1>World Clock</h1>
 
-        <select name="cities" id="cities">
+        <select id="city">
           <option value="">Select a city...</option>
-          <option value="london">London</option>
-          <option value="madrid">Madrid</option>
-          <option value="lima">Lima</option>
-          <option value="sydney">Sydney</option>
-          <option value="moscow">Moscow</option>
+          <option value="current">My current location</option>
+          <option value="Europe/London">London</option>
+          <option value="Europe/Madrid">Madrid</option>
+          <option value="America/Lima">Lima</option>
+          <option value="Australia/Sydney">Sydney</option>
+          <option value="Europe/Moscow">Moscow</option>
         </select>
-        <div class="city">
-          <h2>London</h2>
+
+        <div id="cities">
+
+          <div class="city" id="london">
+            <div>
+              <h2>London</h2>
+              <div class="date"></div>
+            </div>
+              
+                <div class="time"></div>
+              </div>
+        
+
+          <div class="city" id="madrid">
+            <div>
+              <h2>Madrid</h2>
+              <div class="date"></div>
+            </div>
+              
+              <div class="time" id="time"></div>
+          </div>
         </div>
-        <div class="date">13th December 2024</div>
-        <div class="time">03:00</div>
-        <div class="city">
-          <h2>Madrid</h2>
-        </div>
-        <div class="date">13th December 2014</div>
-        <div class="time">03:00</div>
-      </main>
+        </main>
+
+
       <footer>
         This project was coded by
         <a href="https://github.com/claireingham" target="_blank">
@@ -43,7 +59,6 @@
         ></a>
         Git Hub and hosted on Netlify Netlify
       </footer>
-    </div>
     <script src="src/app.js"></script>
   </body>
 </html>
