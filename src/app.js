@@ -12,8 +12,31 @@ setInterval(function () {
   let madridDateElement = document.querySelector("#madrid .date");
   let madridTimeElement = document.querySelector("#madrid .time");
   let madridTime = moment().tz("Europe/Madrid");
-  madridDateElement.innerHTML = moment().format("MMMM Do YYYY");
+  madridDateElement.innerHTML = madridTime.format("MMMM Do YYYY");
   madridTimeElement.innerHTML = madridTime.format(
     "h:mm:ss [<small>]A[<small>]"
   );
-}, 1000);
+  updateTime();
+  setInterval(updateTime, 1000);
+});
+
+function updateCity(event) {
+  let cityTimeZone = event.target.value;
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let cityTime = moment().tz(cityTimeZone);
+  let citiesElement = document.querySelector("#cities");
+  citiesElement.innerHTML = `
+  <div class="city">
+            <div>
+              <h2>${cityName}<h2>
+              <div class="date"> ${cityTime.format("MMMM Do YYYY")}</div>
+            </div>
+              
+                <div class="time">${cityTime.format(
+                  "h:mm:ss"
+                )} <small>${cityTime.format("A")}<small></div>
+  `;
+}
+
+let citySelectElement = document.querySelector("#city");
+citySelectElement = addEventListener("change", updateCity);
