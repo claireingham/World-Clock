@@ -1,4 +1,4 @@
-setInterval(function () {
+function updateTime() {
   let londonElement = document.querySelector("#london");
   let londonDateElement = document.querySelector("#london .date");
   let londonTimeElement = document.querySelector("#london .time");
@@ -16,9 +16,7 @@ setInterval(function () {
   madridTimeElement.innerHTML = madridTime.format(
     "h:mm:ss [<small>]A[<small>]"
   );
-  updateTime();
-  setInterval(updateTime, 1000);
-});
+}
 
 function updateCity(event) {
   let cityTimeZone = event.target.value;
@@ -42,6 +40,9 @@ function updateCity(event) {
   <a href="/">All Cities</a>
   `;
 }
+
+updateTime();
+setInterval(updateTime, 1000);
 
 let citySelectElement = document.querySelector("#city");
 citySelectElement = addEventListener("change", updateCity);
